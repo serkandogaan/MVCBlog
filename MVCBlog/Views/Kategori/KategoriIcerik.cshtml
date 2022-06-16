@@ -1,0 +1,127 @@
+﻿@using Blog.DAL
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Makaleler>
+@{
+    Layout = null;
+    ViewBag.Title = "Kategori İçeriği";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Site Metas -->
+    <title>MVC Blog - @ViewBag.Title</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="~/Theme/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="~/Theme/images/apple-touch-icon.png">
+
+    <!-- Design fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="~/Theme/css/bootstrap.css" rel="stylesheet">
+    <!-- FontAwesome Icons core CSS -->
+    <link href="~/Theme/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Theme/style.css" rel="stylesheet">
+    <!-- Responsive styles for this template -->
+    <link href="~/Theme/css/responsive.css" rel="stylesheet">
+    <!-- Colors for this template -->
+    <link href="~/Theme/css/colors.css" rel="stylesheet">
+    <!-- Version Garden CSS for this template -->
+    <link href="~/Theme/css/version/garden.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        @Html.Action("Navbar", "Home");
+
+
+        <section class="section wb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+
+
+                        @foreach (var makaleliste in Model)
+                        {
+                            <div class="page-wrapper">
+                                <div class="blog-list clearfix">
+                                    <div class="blog-box row">
+                                        <div class="col-md-4">
+                                            <div class="post-media">
+                                                <a href="/Makale/MakaleGoruntule/@makaleliste.MakaleID" title="">
+                                                    <img src="@makaleliste.MakaleGorsel" alt="" class="img-fluid">
+                                                    <div class="hovereffect"></div>
+                                                </a>
+                                            </div><!-- end media -->
+                                        </div><!-- end col -->
+                                        <div class="blog-meta big-meta col-md-8">
+                                            <span class="bg-aqua"><a href="/Makale/MakaleGoruntule/@makaleliste.MakaleID" title="">@makaleliste.Kategoriler.KategoriAdi</a></span>
+                                            <h4><a href="/Makale/MakaleGoruntule/@makaleliste.MakaleID" title="">@makaleliste.MakaleBaslikAdi</a></h4>
+                                            <p>@makaleliste.MakaleIcerik.Substring(0, 3) ...</p>
+                                            @*<small><a href="garden-category.html" title=""><i class="fa fa-eye"></i> 1887</a></small>*@
+                                            <small>@makaleliste.MakaleEklenmeTarihi</small>
+                                            <small><a href="/Yazar/YazarGoruntule/@makaleliste.YazarID" title="">@makaleliste.Yazarlar.YazarAdi</a></small>
+                                        </div><!-- end meta -->
+                                    </div><!-- end blog-box -->
+                                    <hr class="invis">
+                                </div><!-- end blog-list -->
+                            </div>
+
+                        }
+                        <hr class="invis">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination justify-content-start">
+                                        @Html.PagedListPager(Model, sayfa => Url.Action("Index", "Home", new { sayfa }), new PagedListRenderOptions
+                                   {
+
+                                       LiElementClasses = new List<string>
+                                       { "page-item","page-link"}
+                                   })
+                                    </ul>
+                                </nav>
+                            </div><!-- end col -->
+                        </div>
+
+
+
+
+
+                    </div><!-- end col -->
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sidebar">
+                            @Html.Action("PopulerKategorileriListele", "Kategori")
+                        </div><!-- end sidebar -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+
+
+
+    </div><!-- end wrapper -->
+    <!-- Core JavaScript
+    ================================================== -->
+    <script src="~/Theme/js/jquery.min.js"></script>
+    <script src="~/Theme/js/tether.min.js"></script>
+    <script src="~/Theme/js/bootstrap.min.js"></script>
+    <script src="~/Theme/js/custom.js"></script>
+</body>
+</html>

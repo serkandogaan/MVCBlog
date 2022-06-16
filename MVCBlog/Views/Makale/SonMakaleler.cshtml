@@ -1,0 +1,18 @@
+﻿@using Blog.DAL
+@model List<Makaleler>
+
+@foreach (var sonmakaleler in Model)
+
+{
+    <div class="list-group">
+        <a href="/Makale/MakaleGoruntule/@sonmakaleler.MakaleID" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="w-100 justify-content-between">
+
+                <img src="@sonmakaleler.MakaleGorsel" alt="" class="img-fluid float-left">
+                <h5 class="mb-1">@sonmakaleler.MakaleBaslikAdi</h5>
+                <h5 class="mb-1">@sonmakaleler.Kategoriler.KategoriAdi</h5>
+                <small>@sonmakaleler.MakaleEklenmeTarihi</small>
+            </div>
+        </a>
+    </div>
+}

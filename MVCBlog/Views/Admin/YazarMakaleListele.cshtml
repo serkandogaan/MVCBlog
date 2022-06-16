@@ -1,0 +1,82 @@
+﻿@using Blog.DAL
+@model List<Makaleler>
+@{
+    ViewBag.Title = "YazarMakaleListele";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>YazarMakaleListele</h2>
+
+<section class="content">
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Makaleler</h3>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 10%">
+                            Makale ID
+                        </th>
+                        <th style="width: 15%">
+                            Makale Kategorisi
+                        </th>
+                        <th style="width: 15%">
+                            Makale Yazarı
+                        </th>
+                        <th style="width: 20%">
+                            Makale Adı
+                        </th>
+                        <th style="width: 30%">
+                            Makale İçerik
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var yazarmakale in Model)
+                    {
+
+                    <tr>
+                        <td>
+                            <a>
+                                @yazarmakale.MakaleID
+                            </a>
+
+                        </td>
+                        <td>
+                            <a>
+                                @yazarmakale.Kategoriler.KategoriAdi
+                            </a>
+
+                        </td>
+                        <td>
+                            <a>
+                                @yazarmakale.Yazarlar.YazarAdi
+                            </a>
+
+                        </td>
+                        <td>
+                            <a>
+                                @yazarmakale.MakaleBaslikAdi
+                            </a>
+                        </td>
+                        <td>
+                            <a>
+                                @yazarmakale.MakaleIcerik.Substring(0, 10)
+                            </a>
+                        </td>
+                        <td>
+                            <a>
+                                <a href="/Makale/MakaleyiGuncelle/@yazarmakale.MakaleID" class="btn btn-info">Makaleyi Güncelle</a>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.card -->
+</section>

@@ -1,0 +1,25 @@
+﻿@model Blog.DAL.Kategoriler
+@{
+                /**/
+
+                ViewBag.Title = "YeniKategoriEkle";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>YeniKategoriEkle</h2>
+
+<div>
+
+    @using (Html.BeginForm("YeniKategoriEkle", "Kategori", FormMethod.Post))
+    {
+        @Html.Label("Yeni Kategori Adını Girin : ")
+        @Html.TextBoxFor(x => x.KategoriAdi, new { @class = "form-control" })
+        <br />
+        @Html.Label("Yeni Kategori Açıklamasını Girin : ")
+        @Html.TextBoxFor(x => x.KategoriAciklama, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">Yeni Kategoriyi Ekle</button>
+
+    }
+
+</div>

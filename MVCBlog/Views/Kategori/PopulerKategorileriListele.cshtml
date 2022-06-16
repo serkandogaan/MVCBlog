@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Blog.DAL.Kategoriler>
+
+
+<div class="widget">
+    <h2 class="widget-title">Popüler Kategoriler</h2>
+    <div class="link-widget">
+        <ul>
+            @foreach (var PopulerKategoriler in Model)
+            {
+                <li><a href="/Kategori/KategoriIcerik/@PopulerKategoriler.KategoriID">@PopulerKategoriler.KategoriAdi <span>(@PopulerKategoriler.Makalelers.Count)</span></a></li>
+            }
+        </ul>
+    </div><!-- end link-widget -->
+</div><!-- end widget -->

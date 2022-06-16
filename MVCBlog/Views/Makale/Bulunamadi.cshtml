@@ -1,0 +1,70 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Ana Sayfa";
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Site Metas -->
+    <title>MVC Blog </title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="~/Theme/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="~/Theme/images/apple-touch-icon.png">
+
+    <!-- Design fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="~/Theme/css/bootstrap.css" rel="stylesheet">
+    <!-- FontAwesome Icons core CSS -->
+    <link href="~/Theme/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Theme/style.css" rel="stylesheet">
+    <!-- Responsive styles for this template -->
+    <link href="~/Theme/css/responsive.css" rel="stylesheet">
+    <!-- Colors for this template -->
+    <link href="~/Theme/css/colors.css" rel="stylesheet">
+    <!-- Version Garden CSS for this template -->
+    <link href="~/Theme/css/version/garden.css" rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        @Html.Action("Navbar", "Home");
+
+        <section class="section wb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                        Makale Bulunamadı
+
+                    </div><!-- end col -->                    
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+
+
+
+    </div><!-- end wrapper -->
+    <!-- Core JavaScript
+    ================================================== -->
+    <script src="~/Theme/js/jquery.min.js"></script>
+    <script src="~/Theme/js/tether.min.js"></script>
+    <script src="~/Theme/js/bootstrap.min.js"></script>
+    <script src="~/Theme/js/custom.js"></script>
+</body>
+</html>

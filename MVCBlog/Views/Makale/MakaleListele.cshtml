@@ -1,0 +1,48 @@
+﻿@using Blog.DAL
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Makaleler>
+
+@foreach (var makaleliste in Model)
+{
+    <div class="page-wrapper">
+        <div class="blog-list clearfix">
+            <div class="blog-box row">
+                <div class="col-md-4">
+                    <div class="post-media">
+                        <a href="/Makale/MakaleGoruntule/@makaleliste.MakaleID" title="">
+                            <img src="@makaleliste.MakaleGorsel" alt="" class="img-fluid">
+                            <div class="hovereffect"></div>
+                        </a>
+                    </div><!-- end media -->
+                </div><!-- end col -->
+                <div class="blog-meta big-meta col-md-8">
+                    <span class="bg-aqua"><a href="/Makale/MakaleGoruntule/@makaleliste.MakaleID" title="">@makaleliste.Kategoriler.KategoriAdi</a></span>
+                    <h4><a href="/Makale/MakaleGoruntule/@makaleliste.MakaleID" title="">@makaleliste.MakaleBaslikAdi</a></h4>
+                    <p>@makaleliste.MakaleIcerik.Substring(0, 150) ...</p>
+                    @*<small><a href="garden-category.html" title=""><i class="fa fa-eye"></i> 1887</a></small>*@
+                    <small>@makaleliste.MakaleEklenmeTarihi</small>
+                    <small><a href="/Yazar/YazarGoruntule/@makaleliste.YazarID" title="">@makaleliste.Yazarlar.YazarAdi</a></small>
+                </div><!-- end meta -->
+            </div><!-- end blog-box -->
+            <hr class="invis">
+        </div><!-- end blog-list -->
+    </div>
+
+}
+<hr class="invis">
+<div class="row">
+    <div class="col-md-12">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-start">
+                @Html.PagedListPager(Model, sayfa => Url.Action("Index", "Home", new { sayfa }), new PagedListRenderOptions
+           {
+               
+               LiElementClasses = new List<string>
+               { "page-link"}
+           })
+            </ul>
+        </nav>
+    </div><!-- end col -->
+</div>
+

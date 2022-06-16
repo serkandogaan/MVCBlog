@@ -1,0 +1,24 @@
+﻿@model Blog.DAL.Makaleler
+@{
+    ViewBag.Title = "MakaleEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>MakaleEkle</h2>
+
+@using (Html.BeginForm("MakaleEkle", "Makale", FormMethod.Post))
+{
+    @Html.Label("Makale Başlığı")
+    @Html.TextBoxFor(x => x.MakaleBaslikAdi, new { @class = "form-control" })
+    <br />
+    @Html.Label("Makale Kategorisi")
+    @Html.DropDownListFor(x => x.KategoriID, (List<SelectListItem>)ViewBag.KategoriListesi, new { @class = "form-control" })
+    <br />
+    @Html.Label("Makale Görseli")
+    @Html.TextBoxFor(x => x.MakaleGorsel, new { @class = "form-control"})
+    <br />
+    @Html.Label("Makale İçeriği")
+    @Html.TextAreaFor(x => x.MakaleIcerik, new { @class = "form-control" })
+    <br />
+    <button type="submit" class="btn btn-success">Makale Ekle</button>
+}

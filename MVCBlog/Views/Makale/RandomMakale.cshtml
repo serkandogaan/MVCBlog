@@ -1,0 +1,29 @@
+﻿@using Blog.DAL
+@model List<Makaleler>
+
+
+<div class="custombox clearfix">
+    <h4 class="small-title">Bunlarada Gözatabilirsiniz</h4>
+    <div class="row">
+        @foreach (var randommakale in Model)
+        {
+            <div class="col-lg-6">
+                <div class="blog-box">
+                    <div class="post-media">
+                        <a href="/Makale/MakaleGoruntule/@randommakale.MakaleID" title="">
+                            <img src="@randommakale.MakaleGorsel" alt="" class="img-fluid">
+                            <div class="hovereffect">
+                                <span class=""></span>
+                            </div><!-- end hover -->
+                        </a>
+                    </div><!-- end media -->
+                    <div class="blog-meta">
+                        <h4><a href="/Makale/MakaleGoruntule/@randommakale.MakaleID" title="">@randommakale.MakaleBaslikAdi</a></h4>
+                        <small><a href="/Kategori/KategoriListele/@randommakale.KategoriID" title="">@randommakale.Kategoriler.KategoriAdi</a></small>
+                        <small>@randommakale.MakaleEklenmeTarihi</small>
+                    </div><!-- end meta -->
+                </div><!-- end blog-box -->
+            </div>
+        }<!-- end col -->
+    </div><!-- end row -->
+</div><!-- end custom-box -->

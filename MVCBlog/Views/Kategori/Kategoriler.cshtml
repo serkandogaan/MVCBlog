@@ -1,0 +1,119 @@
+﻿@model PagedList.IPagedList<Blog.DAL.Kategoriler>
+@using PagedList
+@using PagedList.Mvc
+@{
+    Layout = null;
+    ViewBag.Title = "Kategoriler";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Site Metas -->
+    <title>Forest Time - Stylish Magazine Blog Template</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Design fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="~/Theme/css/bootstrap.css" rel="stylesheet">
+    <!-- FontAwesome Icons core CSS -->
+    <link href="~/Theme/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="~/Theme/style.css" rel="stylesheet">
+    <!-- Responsive styles for this template -->
+    <link href="~/Theme/css/responsive.css" rel="stylesheet">
+    <!-- Colors for this template -->
+    <link href="~/Theme/css/colors.css" rel="stylesheet">
+    <!-- Version Garden CSS for this template -->
+    <link href="~/Theme/css/version/garden.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        @Html.Action("Navbar", "Home");
+        
+        <div class="page-title wb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                        <h2><i class="fa fa-leaf bg-green"></i> Kategoriler</h2>
+                    </div><!-- end col -->
+                    <div class="col-lg-4 col-md-4 col-sm-12 hidden-xs-down hidden-sm-down">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/Home/Index">Ana Sayfa</a></li>
+                            <li class="breadcrumb-item"><a href="/Kategori/Kategoriler">Kategoriler</a></li>
+                        </ol>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </div><!-- end page-title -->
+        <section class="section wb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                        <div class="page-wrapper">
+                            <div class="blog-list clearfix">
+
+                                @foreach (var kategoriler in Model)
+                                {
+                                    <div class="blog-box row">
+
+                                        <div class="blog-meta big-meta col-md-8">
+                                            <span class="bg-aqua"><a href="/Kategori/KategoriIcerik/@kategoriler.KategoriID" title="">@kategoriler.KategoriAdi</a></span>
+                                            <h4><a href="/Kategori/KategoriIcerik/@kategoriler.KategoriID" title="">@kategoriler.KategoriAdi</a></h4>
+                                            <p>@kategoriler.KategoriAciklama</p>
+
+                                        </div><!-- end meta -->
+                                    </div><!-- end blog-box -->
+                                    <hr class="invis">
+                                }
+
+
+
+
+
+                            </div><!-- end blog-list -->
+                        </div><!-- end page-wrapper -->
+                        <hr class="invis">
+                        @Html.PagedListPager(Model, sayfa => Url.Action("Kategoriler","Kategori", new { sayfa}), new PagedListRenderOptions
+                   {
+                       LiElementClasses = new List<string>
+                            { "page-link"}
+                   })
+                    </div><!-- end col -->
+                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div class="sidebar">
+                            @Html.Action("PopulerKategorileriListele", "Kategori")
+                        </div><!-- end sidebar -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+
+
+    </div><!-- end wrapper -->
+    <!-- Core JavaScript
+    ================================================== -->
+    <script src="~/Theme/js/jquery.min.js"></script>
+    <script src="~/Theme/js/tether.min.js"></script>
+    <script src="~/Theme/js/bootstrap.min.js"></script>
+    <script src="~/Theme/js/custom.js"></script>
+</body>
+</html>

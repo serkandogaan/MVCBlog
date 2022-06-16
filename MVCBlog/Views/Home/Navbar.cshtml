@@ -1,0 +1,76 @@
+﻿<div class="topbar-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6 hidden-xs-down">
+                <div class="topsocial">
+                    @if (User.Identity.IsAuthenticated == true)
+                    {
+                        <a class="navbar" data-toggle="tooltip" data-placement="bottom"><i class="fa fa-user">  @HttpContext.Current.User.Identity.Name</i></a>
+                    }
+
+
+                </div><!-- end social -->
+            </div><!-- end col -->
+            <div class="col-lg-4 hidden-md-down">
+            </div><!-- end col -->
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                <div class="topsearch text-right">
+                    
+                </div><!-- end search -->
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end header-logo -->
+</div><!-- end topbar -->
+
+<div class="header-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="logo">
+                    <a href="/Home/Index"><img src="~/Theme/images/version/garden-logo.png" alt=""></a>
+                </div><!-- end logo -->
+            </div>
+        </div><!-- end row -->
+    </div><!-- end header-logo -->
+</div><!-- end header -->
+
+<header class="header">
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-toggleable-md">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Forest Timemenu" aria-controls="Forest Timemenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-md-center" id="Forest Timemenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link color-green-hover" href="/Home/Index">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link color-green-hover" href="/Kategori/Kategoriler">Kategoriler</a>
+                    </li>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Yazar"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link color-green-hover" href="/Admin/Index">Admin Panel</a>
+                        </li>
+                    }
+                    
+                    @if (User.Identity.IsAuthenticated == false)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link color-green-hover" href="/Login/Login">Giriş Yap</a>
+                        </li>
+                    }
+                    @if (User.Identity.IsAuthenticated == true)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link color-green-hover" href="/Login/Logout">Çıkış Yap</a>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+        </nav>
+    </div><!-- end container -->
+</header><!-- end header -->

@@ -1,0 +1,60 @@
+﻿@using Blog.DAL
+@model List<Yazarlar>
+@{
+    ViewBag.Title = "TumYazarlariListele";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>TumYazarlariListele</h2>
+
+<section class="content">
+    <!-- Default box -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Aktif Başlıklar</h3>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 10%">
+                            Yazar ID
+                        </th>
+                        <th style="width: 15%">
+                            Yazar Ad Soyad
+                        </th>
+                        <th style="width: 30%">
+                            Yazar Mail Adresi
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var allyazarlar in Model)
+                    {
+
+                    <tr>
+                        <td>
+                            <a>
+                                @allyazarlar.YazarID
+                            </a>
+
+                        </td>
+                        <td>
+                            <a>
+                                @allyazarlar.YazarAdi @allyazarlar.YazarSoyAdi
+                            </a>
+                        </td>
+                        <td>
+                            <a>
+                                @allyazarlar.YazarMailAdresi
+                            </a>
+                        </td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.card -->
+</section>

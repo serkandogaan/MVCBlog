@@ -1,0 +1,26 @@
+﻿@using Blog.DAL
+@model List<Makaleler>
+
+
+
+@foreach (var feamakale in Model)
+{
+
+    <div class="left-side">
+        <div class="masonry-box post-media">
+            <img src="@feamakale.MakaleGorsel" alt="" class="img-fluid">
+            <div class="shadoweffect">
+                <div class="shadow-desc">
+                    <div class="blog-meta">
+                        <span class="bg-aqua"><a href="/Kategori/KategoriListele/@feamakale.KategoriID" title="">@feamakale.Kategoriler.KategoriAdi</a></span>
+                        <h4><a href="/Makale/MakaleGoruntule/@feamakale.MakaleID" title="">@feamakale.MakaleBaslikAdi</a></h4>
+                        <small><a href="/Makale/MakaleGoruntule/@feamakale.MakaleID" title="">@feamakale.MakaleEklenmeTarihi</a></small>
+                        <small><a href="/Yazar/YazarGoruntule/@feamakale.YazarID" title="">@feamakale.Yazarlar.YazarAdi</a></small>
+                    </div><!-- end meta -->
+                </div><!-- end shadow-desc -->
+            </div><!-- end shadow -->
+        </div><!-- end post-media -->
+    </div><!-- end left-side -->
+}
+
+

@@ -1,0 +1,37 @@
+﻿@model Blog.DAL.Makaleler
+
+
+@{
+    ViewBag.Title = "MakaleyiGuncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>MakaleyiGuncelle</h2>
+
+@using (Html.BeginForm("MakaleyiGuncelle", "Makale", FormMethod.Post))
+{
+    <form>
+        @Html.HiddenFor(x => x.MakaleID)
+        @Html.HiddenFor(x => x.KategoriID)
+        @Html.HiddenFor(x => x.YazarID)
+        @*@Html.Label("Kategori")
+            @Html.TextBoxFor(x => x.KategoriID, new { @readonly = "readonly", @class = "form-control" })
+            <br />
+            @Html.Label("Yazar")
+            @Html.TextBoxFor(x => x.YazarID, new { @readonly = "readonly", @class = "form-control" })
+            <br />*@
+        @Html.Label("Makale Başlığı")
+        @Html.TextBoxFor(x => x.MakaleBaslikAdi, new { @class = "form-control" })
+        <br />
+        @Html.Label("Makale Görseli")
+        @Html.TextBoxFor(x => x.MakaleGorsel, new { @class = "form-control" })
+        <br />
+        @Html.Label("Makale İçeriği")
+        @Html.TextAreaFor(x => x.MakaleIcerik, new { @class = "form-control" })
+        <br />
+        <button type="submit">Güncelle</button>
+
+
+    </form>
+
+}
